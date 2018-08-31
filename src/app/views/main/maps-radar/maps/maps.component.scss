@@ -1,0 +1,26 @@
+@import '~ng-smn-ui/lib/core/variables';
+
+:host {
+    ui-card {
+        position: relative;
+        z-index: 2;
+
+        .ui-progress {
+            position: absolute;
+            transition: height 280ms ui-easing('deceleration');
+            height: 0;
+        }
+
+        &.loading {
+            .ui-progress {
+                height: 4px;
+            }
+        }
+
+        .map-container {
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 3px;
+            height: 600px;
+        }
+    }
+}

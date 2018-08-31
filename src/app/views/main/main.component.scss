@@ -1,0 +1,41 @@
+@mixin avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    margin: 12px;
+    cursor: default;
+    user-select: none;
+}
+
+:host {
+    > /deep/ ui-nav-drawer ui-list .ui-list {
+        padding: 0;
+    }
+
+    > ui-toolbar .avatar {
+        @include avatar;
+    }
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: right;
+    user-select: none;
+
+    .primary {
+        text-align: right;
+        font-size: 16px;
+    }
+
+    .secondary {
+        text-align: right;
+        font-size: 12px;
+    }
+}

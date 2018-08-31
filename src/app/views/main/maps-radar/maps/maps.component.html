@@ -1,0 +1,73 @@
+<div class="ui-s960">
+    <div class="ui-flex-container">
+        <ui-card class="elevate-on-toolbar" style="width: 660px; margin-right: 16px">
+            <div class="ui-progress accent" [class.hide]="!loading">
+                <div class="indeterminate"></div>
+            </div>
+
+            <ui-toolbar class="flat">
+                <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+
+                <span class="title">Maps</span>
+            </ui-toolbar>
+
+            <ui-card-content>
+                <div #gmap class="map-container">
+
+                </div>
+            </ui-card-content>
+        </ui-card>
+
+        <ui-card style="width: 300px">
+            <ui-card-title>Opções do mapa</ui-card-title>
+
+            <ui-card-content>
+                <ui-flex-container>
+                    <ui-input-container>
+                        <input type="text"
+                               [(ngModel)]="latitude"
+                               uiInput
+                               name="latitude">
+                        <label>Latitude</label>
+                    </ui-input-container>
+                </ui-flex-container>
+
+                <ui-flex-container>
+                    <ui-input-container>
+                        <input type="text"
+                               [(ngModel)]="longitude"
+                               uiInput
+                               name="longitude">
+                        <label>Longitude</label>
+                    </ui-input-container>
+                </ui-flex-container>
+
+                <div class="ui-button-container">
+                    <button class="ui-button primary full" (click)="setCoordinates()">Pesquisar coordenada</button>
+                </div>
+            </ui-card-content>
+        </ui-card>
+    </div>
+</div>
+
+<div class="ui-fab-container">
+    <button class="ui-button fab accent mini" [uiTooltip]="'Dark mode'" [left]="true" (click)="darkMode()">
+        <i class="material-icons">brightness_2</i>
+    </button>
+
+    <button class="ui-button fab accent mini" [uiTooltip]="'Terreno'" [left]="true" (click)="setMapType('terrain')">
+        <i class="material-icons">terrain</i>
+    </button>
+
+    <button class="ui-button fab accent mini" [uiTooltip]="'Satélite'" [left]="true" (click)="setMapType('satellite')">
+        <i class="material-icons">satellite</i>
+    </button>
+
+    <button class="ui-button primary fab" [uiTooltip]="'Estradas'" [left]="true" (click)="setMapType('roadmap')">
+        <i class="material-icons">map</i>
+    </button>
+</div>
+
+

@@ -1,0 +1,52 @@
+<ui-toolbar class="fixed flat elevate-on-scroll primary elevate-on-s960" id="app-header">
+    <button (click)="menuOpen = true" class="ui-button flat icon" uiRipple>
+        <i class="material-icons">menu</i>
+    </button>
+
+    <span class="title">{{title}}</span>
+
+    <div class="align-right">
+        <div class="user-info">
+            <div class="primary">{{user.nome}}</div>
+            <div class="secondary">{{user.email}}</div>
+        </div>
+        <div class="avatar"
+             menu-align="right"
+             theme-class="menu-user"
+             [ngStyle]="{'background-image': user.imagem ? 'url(' + user.imagem + ')' : '',
+                         'background-color': user.imagem ? 'white' : user.cor,
+                         'color': isBright(user.cor) ? 'black': 'white'}">
+            <span *ngIf="user && !user.imagem && user.nome">{{user.nome.charAt(0)}}</span>
+        </div>
+    </div>
+</ui-toolbar>
+
+<!-- Add class 'persistent' para deixar o menu persistente, deve também descomentar o código no main.component -->
+<ui-nav-drawer [(open)]="menuOpen">
+    <ui-toolbar class="flat">
+        <button (click)="menuOpen = false" class="ui-button flat icon" uiRipple>
+            <i class="material-icons">menu</i>
+        </button>
+        <div class="logo" style="display: flex; align-items: center">
+            Angular Google Maps
+        </div>
+    </ui-toolbar>
+    <div class="ui-nav-drawer-overflow">
+        <div class="ui-list">
+            <a class="ui-list-item" uiRipple routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="material-icons" style="margin-right: 10px">home</i>
+                Home
+            </a>
+            <a class="ui-list-item" uiRipple routerLink="/maps" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="material-icons" style="margin-right: 10px">place</i>
+                Maps
+            </a>
+        </div>
+    </div>
+</ui-nav-drawer>
+
+<router-outlet></router-outlet>
+
+
+
+
